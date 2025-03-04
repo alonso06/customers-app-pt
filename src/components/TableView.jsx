@@ -1,7 +1,13 @@
+import { useGetCustomersType } from "../hooks/useGetCustomersType"
+
 export const TableView = () => {
-    return (
+
+    const { customersT } = useGetCustomersType()
+    console.log(customersT)
+    return <>
 
         <div class="relative overflow-x-auto">
+        
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -20,23 +26,30 @@ export const TableView = () => {
                 </thead>
                 <tbody>
 
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
-                        </th>
-                        <td class="px-6 py-4">
-                            Silver
-                        </td>
 
-                        <td class="px-6 py-4">
-                            Botones
-                        </td>
-                      
-                    </tr>
-                    
+                    {
+                        customersT.map(({ id, name, state }) => (
+                            <tr key={id} class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+                                <th >
+                                    {name}
+                                </th>
+                                <th>
+                                    {state ? 'Activo' : 'Inactivo'}
+                                </th>
+                                <th>
+                                    <button type="button">eliminar</button>
+                                </th>
+                            </tr>
+                        )
+                        )
+
+                    }
+
+
+
                 </tbody>
             </table>
         </div>
 
-    )
+    </>
 }

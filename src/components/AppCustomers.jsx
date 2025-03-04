@@ -1,10 +1,19 @@
+import { Link } from "react-router-dom"
 import { OptionMenu } from "./OptionMenu"
 
 export const AppCustomers = () => {
   return (
     <div className='flex-col'>
-       <OptionMenu name={'Clientes'}/>
-       <OptionMenu name={'Tipos de clientes'} />
-  </div>
+      <Link to={'/admin-clientes'} >
+        <OptionMenu name={'Clientes'} />
+
+      </Link>
+
+      <Link to={'/admin-tipos-clientes'}>
+        <OptionMenu name={'Tipos de clientes'} />
+
+      </Link>
+
+    </div>
   )
 }

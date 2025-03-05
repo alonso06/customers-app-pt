@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { OptionMenu } from "./OptionMenu"
+import { OptionMenu } from "./components/OptionMenu"
 
 export const AppCustomers = () => {
   return (

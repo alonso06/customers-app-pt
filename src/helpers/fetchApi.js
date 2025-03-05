@@ -18,9 +18,6 @@ export const getCustomersTypeApi = async () => {
 
 export const createCustomerType = async (obj) => {
 
-
-    console.log('holaa')
-
     const api_url = URL_BASE + "customers_type/";
     const response = await fetch(
         api_url,
@@ -33,4 +30,28 @@ export const createCustomerType = async (obj) => {
         }
     );
     return response;
+}
+
+export const deleteCustomerType = async (id) => {
+
+    try {
+        const api_url = URL_BASE + `customers_type/${id}/`;
+        const response = await fetch(
+            api_url,
+            {
+                method: 'DELETE',
+            }
+        );
+        // TODO: Revisar manejo de errores
+        if(!response.ok){
+            const {detail} = await response.json()
+            throw new Error(`Error ${response.status} : ${detail}`)
+        }
+
+        return response;
+
+        
+    } catch (err) {
+        console.error('Error ', err);
+    }
 }

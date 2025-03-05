@@ -1,12 +1,29 @@
+import { deleteCustomerType } from "../helpers/fetchApi"
 import { useGetCustomersType } from "../hooks/useGetCustomersType"
+import { CustomButton } from "./CustomButton"
 
 export const TableView = () => {
 
-    const { customersT } = useGetCustomersType()
+    const { customersT, setCustomersT } = useGetCustomersType()
+
+    const handleDeleteCustomerType = async (e) => {
+
+        const customerTypeId = e.target.id;
+        const response = await deleteCustomerType(
+            parseInt(customerTypeId));
+
+        if (response) {
+            const newCustomersT = customersT.filter(
+                ({ id }) => (id != customerTypeId));
+
+            setCustomersT(newCustomersT);
+        }
+    }
+
     return <>
 
         <div class="relative overflow-x-auto">
-        
+
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -36,7 +53,13 @@ export const TableView = () => {
                                     {state ? 'Activo' : 'Inactivo'}
                                 </th>
                                 <th>
-                                    <button type="button">eliminar</button>
+                                    <CustomButton
+                                        id={id}
+                                        name={'Eliminar'}
+                                        type={'button'}
+                                        styles={'bg-red-700 hover:bg-red-800'}
+                                        onclick={handleDeleteCustomerType}
+                                    />
                                 </th>
                             </tr>
                         )

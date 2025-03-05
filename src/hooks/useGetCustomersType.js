@@ -16,6 +16,9 @@ export const useGetCustomersType = () => {
         getCustomersType();
     }, []);
 
-    return {customersT}
+    return {
+        customersT,
+        setCustomersT
+    }
     
 }

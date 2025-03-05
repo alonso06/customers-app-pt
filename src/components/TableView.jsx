@@ -3,7 +3,6 @@ import { useGetCustomersType } from "../hooks/useGetCustomersType"
 export const TableView = () => {
 
     const { customersT } = useGetCustomersType()
-    console.log(customersT)
     return <>
 
         <div class="relative overflow-x-auto">

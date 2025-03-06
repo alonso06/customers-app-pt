@@ -1,15 +1,30 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { TitleForm } from '../TitleForm'
 import { CustomButton } from '../CustomButton'
 import { createCustomerType } from '../../helpers/fetchApi';
-
+import { useLocation } from 'react-router-dom';
 
 export const TypeCustomerForm = () => {
 
     const [customerType, setCustomerType] = useState({
+        'id': null,
         'name': '',
-        'state': false
+        'state': true
     });
+    
+    const location = useLocation();
+    
+    const fillFields = () => {
+        const objCustomerType = location.state.customerTypeData
+
+        setCustomerType(objCustomerType);
+
+    }
+    
+    useEffect(()=>fillFields(),[]);
+
+    // fillFields();
+
 
     const handleChange = (e) => {
 
@@ -31,6 +46,8 @@ export const TypeCustomerForm = () => {
         console.log(body);
 
     }
+
+
 
     return (<>
 

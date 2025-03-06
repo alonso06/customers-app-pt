@@ -5,11 +5,13 @@ export const useGetCustomersType = () => {
 
     const [customersT, setCustomersT] = useState([]);
 
+    const [isLoading, setIsLoading] = useState(true);
+
     const getCustomersType = async () => {
 
         const listCType = await getCustomersTypeApi()
         setCustomersT(listCType);
-        
+        setIsLoading(false);
     }
 
     useEffect(() => {
@@ -18,7 +20,9 @@ export const useGetCustomersType = () => {
 
     return {
         customersT,
-        setCustomersT
+        setCustomersT,
+        isLoading, 
+        setIsLoading
     }
     
 }

@@ -9,31 +9,36 @@ import { AppCustomers } from './AppCustomers';
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    
+
     <Routes>
 
       <Route
         path='/'
-        element={<AppCustomers/>}
+        element={<AppCustomers />}
       />
       <Route
         path='/admin-clientes'
-        element={<CustomerAdmin/>}
+        element={<CustomerAdmin />}
       />
       <Route
         path='/admin-tipos-clientes'
-        element={<TypeCustomerAdmin/>}
+        element={<TypeCustomerAdmin />}
       />
       <Route
         path='/add-clientes'
-        element={<CustomerForm/>}
+        element={<CustomerForm />}
       />
       <Route
         path='/add-tipos-clientes'
-        element={<TypeCustomerForm/>}
+        element={<TypeCustomerForm />}
+      />
+
+      <Route
+        path='/update-tipos-clientes'
+        element={<TypeCustomerForm />}
       />
 
     </Routes>
-  
+
   </BrowserRouter>
 )
